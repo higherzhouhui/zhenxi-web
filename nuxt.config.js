@@ -1,5 +1,5 @@
 module.exports = {
-  target: 'server',
+  target: 'static',
   head: {
     title: '费用管理系统_企业费用支出_财务管理软件-企金控-振翕科技',
     htmlAttrs: {
