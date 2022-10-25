@@ -63,7 +63,7 @@
             <div class="f24 m-b-54 tip2">
               每天花1分钟打开APP查看企业完整营收状况
             </div>
-            <nuxt-link to="/together/joinus"><span class="f16 btn">立即体验</span></nuxt-link>
+            <nuxt-link to="/aboutus/formapply"><span class="f16 btn">立即体验</span></nuxt-link>
           </div>
           <div class="item-r">
             <img
@@ -87,7 +87,7 @@
             <div class="f24 m-b-54 tip2">
               本支出项、锁定赚钱项目、筛选优秀员工
             </div>
-            <nuxt-link to="/together/joinus"><span class="f16 btn">立即体验</span></nuxt-link>
+            <nuxt-link to="/aboutus/formapply"><span class="f16 btn">立即体验</span></nuxt-link>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@
                 {{ item1 }}
               </div>
             </div>
-            <nuxt-link to="/together/joinus"><span class="f16 btn m-t-20">立即体验</span></nuxt-link>
+            <nuxt-link to="/aboutus/formapply"><span class="f16 btn m-t-20">立即体验</span></nuxt-link>
           </div>
         </div>
       </div>
@@ -794,32 +794,46 @@ export default Vue.extend({
   }
 }
 .certificate {
-  display: flex;
+  display: grid;
   justify-content: space-between;
-  height: 507px;
+  // height: 507px;
   margin-bottom: 70px;
+  grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .box1,
   .box2,
   .box3,
   .box4 {
     border: 1px solid #dddddd;
     background: #fafafa;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
   }
   .box1 {
-    width: 343px;
+    flex: 1;
+    img {
+      margin-bottom: 20px;
+    }
   }
   .box2 {
-    width: 360px;
+    flex: 1;
   }
   .box3 {
-    width: 246px;
+    flex: 1;
+    img {
+      margin-bottom: 20px;
+    }
   }
   .box4 {
-    width: 445px;
+    flex: 1;
+  }
+  img {
+    width: 100%;
+    object-fit: contain;
   }
 }
 .partner {

@@ -15,7 +15,7 @@
           <div class="f1">授权范围</div>
           <div class="f2">
             <div>标准版</div>
-            <nuxt-link to="/together/joinus"><div class="btn freeuse">注册试用</div></nuxt-link>
+            <nuxt-link to="/aboutus/formapply"><div class="btn freeuse">注册试用</div></nuxt-link>
             <!-- <img class="version-img" src="@/static/image/getprice/freeuse.png" alt=""> -->
           </div>
           <div class="f3">

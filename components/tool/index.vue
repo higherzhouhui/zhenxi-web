@@ -6,6 +6,7 @@
         <img class="tool-img" v-if="!showCustomer" src="@/static/image/tool/contact.png" alt="contact" v-on:click="setCustomerShow(!showCustomer)"/>
         <img class="tool-img" v-if="showCustomer" src="@/static/image/tool/contact-h.png" alt="contact" v-on:click="setCustomerShow(!showCustomer)"/>
         <div class="vxPic contact" :style="{visibility: showCustomer ? 'visible' : 'hidden', opacity: showCustomer ? 1 : 0}" id="customer">
+          <img src="@/static/image/getprice/no.png" class="close" alt="" @click="clickCallBack">
           <div class="contact-title">微信扫码联系专业顾问</div>
           <img class="contact-img" src="@/static/image/qywx.png" alt="">
           <div class="contact-welTel m-t-8">欢迎拨打电话咨询</div>
@@ -69,7 +70,11 @@ export default Vue.extend({
    scrollTop() {
       let scrollTop = document.scrollingElement?.scrollTop || 0;
       const timer = setInterval(() => {
-        scrollTop -= 100;
+        let scrollUnit = 100;
+        if (scrollTop > 1000) {
+          scrollUnit = 200;
+        }
+        scrollTop -= scrollUnit;
         if (scrollTop < 0) {
           clearInterval(timer);
           return;
@@ -178,10 +183,6 @@ export default Vue.extend({
         border-left-color: #fff;
         box-shadow: 0px 3px 51px 0px rgba(174,182,206,0.35);
       }
-      img {
-        width: 100%;
-        height: 100%;
-      }
     }
     .tel {
       width: 220px;
@@ -208,12 +209,12 @@ export default Vue.extend({
       font-size: 16px;
 
       .contact-title {
-        margin: 12px 0;
+        margin: 18px 0 8px 0;
         font-weight: bold;
       }
       .contact-img {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
         object-fit: fill;
       }
       .contact-wallet {
@@ -224,6 +225,26 @@ export default Vue.extend({
       }
       .contact-telNumber {
         color: var(--bg);
+      }
+      .close {
+        position: absolute;
+        right: 8px;
+        top: 6px;
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+      }
+    }
+    .myvx {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 180px;
+      img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+        margin-bottom: 8px;
       }
     }
   }

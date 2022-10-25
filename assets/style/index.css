@@ -94,8 +94,8 @@ button {
 
 body {
   background: #fff;
-  min-width: 1110px;
-  overflow: auto;
+  /* min-width: 1110px;
+  overflow: auto; */
 }
 
 a {

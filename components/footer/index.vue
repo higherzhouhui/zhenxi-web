@@ -6,7 +6,7 @@
         <section>
           <div class="link">
             <ul>
-              <nuxt-link to="/product/expenditure"><li>费控报销</li></nuxt-link>
+              <nuxt-link to="/product/expenditure"><li>支出管控</li></nuxt-link>
               <nuxt-link to="/product/project"><li>项目管理</li></nuxt-link>
               <nuxt-link to="/product/bidding"><li>招投标管理</li></nuxt-link>
               <nuxt-link to="/product/cashflow"><li>现金流分析</li></nuxt-link>
@@ -18,9 +18,9 @@
               <nuxt-link to="/getprice/"><li>银企直联获取报价</li></nuxt-link>
             </ul>
             <ul>
-              <nuxt-link to="/aboutus"><li>了解振翕科技</li></nuxt-link>
+              <nuxt-link to="/aboutus/aboutus"><li>了解振翕科技</li></nuxt-link>
               <li v-on:click="showCustomer">联系我们</li>
-              <li><nuxt-link to="/together/">渠道合作</nuxt-link></li>
+              <li><nuxt-link to="/aboutus/together">渠道合作</nuxt-link></li>
             </ul>
           </div>
           <div class="cooperation">
@@ -35,9 +35,10 @@
             <ul>
               <li>联系电话：4000278016</li>
               <li>邮箱地址：service@zxtec.online</li>
+              <li>联系地址：武汉市光谷鼎创科技园2502-3</li>
             </ul>
             <ul>
-              <li>联系地址：武汉市光谷鼎创科技园2502-3</li>
+              <!-- <li>联系地址：武汉市光谷鼎创科技园2502-3</li> -->
             </ul>
           </div>
         </section>
@@ -60,7 +61,8 @@
   </div>
 </template>
 
-<script lang="ts">import { EventBus, EventTypes } from '~/util';
+<script lang="ts">
+import { EventBus, EventTypes } from '~/util';
 
 export default {
   name: "Head",
@@ -84,12 +86,12 @@ export default {
   position: relative;
   left: 0;
   top: 0;
-  height: 500px;
+  height: 400px;
   min-width: 100%;
   z-index: 8;
   .footer {
     margin: 0 auto;
-    padding-top: 68px;
+    padding-top: 50px;
     .logo {
       height: 30px;
       margin-bottom: 90px;
@@ -121,7 +123,7 @@ export default {
           }
         }
         .cooperation {
-          margin-top: 68px;
+          margin-top: 40px;
           font-size: 24px;
           line-height: 24px;
           color: #ffffff;
@@ -140,8 +142,8 @@ export default {
             }
           }
           li {
-            min-width: 375px;
-            cursor:default;
+            margin-right: 60px;
+            cursor: text;
             &:hover{
               color: #ffffff;
             }
@@ -153,17 +155,19 @@ export default {
         justify-content: center;
         .qrcode {
           .pic {
-            width: 176px;
-            height: 176px;
+            width: 140px;
+            height: 140px;
             border-radius: 10px;
             box-sizing: border-box;
             border: 2px solid #ffffff;
             background: url(@/static/image/ios-down.png) no-repeat;
-            background-size: 100% 100%;
+            background-size: 95% 95%;
+            background-position: center;
           }
           .ios {
             background: url(@/static/image/ios-down.png) no-repeat;
-            background-size: 100% 100%;
+            background-size: 95% 95%;
+            background-position: center;
           }
           .name {
             width: 100%;
