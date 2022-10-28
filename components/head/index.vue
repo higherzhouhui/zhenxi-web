@@ -2,7 +2,7 @@
   <div class="header-body">
     <div class="header">
       <div class="leftContainer">
-        <nuxt-link to="/"><img src="@/static/image/logo.png" alt="" class="logo" /></nuxt-link>
+        <nuxt-link to="/"><svg-icon icon-class="head-logo" class="logo"/></nuxt-link>
         <div class="list">
           <nuxt-link to="/">
             <div class="box" :class="{ active: currentPage == 0 }">
@@ -16,13 +16,7 @@
             </a>
             <div class="arrow"></div>
             <div class="dropDown">
-                <nuxt-link to="/product/expenditure"><li>支出管控</li></nuxt-link>
-                <nuxt-link to="/product/project"><li>项目管理</li></nuxt-link>
-                <nuxt-link to="/product/cashflow"><li>现金流分析</li></nuxt-link>
-                <nuxt-link to="/product/wisdom"><li>智慧财务</li></nuxt-link>
-                <nuxt-link to="/product/integrate"><li>系统集成</li></nuxt-link>
-                <nuxt-link to="/product/payment"><li>聚合支付</li></nuxt-link>
-                <nuxt-link to="/product/bidding"><li>招投标管理</li></nuxt-link>
+                <nuxt-link :to="item.href" v-for="item in menus.product" :key="item.href"><li>{{item.title}}</li></nuxt-link>
             </div>
           </div>
           <div class="box" :class="{ active: currentPage == 2 }">
@@ -32,13 +26,7 @@
               </a>
               <div class="arrow"></div>
               <div class="dropDown">
-                <nuxt-link to="/solution/projectcosts"><li>工程造价咨询&工程安全咨询</li></nuxt-link>
-                <nuxt-link to="/solution/realestate"><li>房地产行业解决方案</li></nuxt-link>
-                <nuxt-link to="/solution/rural"><li>乡村数字化解决方案</li></nuxt-link>
-                <nuxt-link to="/solution/number"><li>数字资产行业解决方案</li></nuxt-link>
-                <nuxt-link to="/solution/production"><li>生产制造业解决方案</li></nuxt-link>
-                <nuxt-link to="/solution/ecommerce"><li>电商行业解决方案</li></nuxt-link>
-                <nuxt-link to="/solution/cosmetology"><li>医疗美容业解决方案</li></nuxt-link>
+                <nuxt-link :to="item.href" v-for="item in menus.solution" :key="item.href"><li>{{item.title}}</li></nuxt-link>
               </div>
           </div>
           <nuxt-link to="/getprice/"><div class="box" :class="{ active: currentPage == 3 }"><div class="menuTitle">服务选择</div></div></nuxt-link>
@@ -49,7 +37,7 @@
             </a>
             <div class="dropDown">
               <nuxt-link to="/aboutus/aboutus"><li>公司介绍</li></nuxt-link>
-              <nuxt-link to="/aboutus/together/"><li>渠道合作</li></nuxt-link>
+              <nuxt-link to="/aboutus/together/"><li style="border-bottom: none;">渠道合作</li></nuxt-link>
             </div>
           </div>
         </div>
@@ -59,6 +47,10 @@
         <nuxt-link to="/download/"><Button class="down">下载企金控</Button></nuxt-link>
         <nuxt-link to="/aboutus/formapply"><Button class="free">免费试用</Button></nuxt-link>
       </div>
+      <div class="menuIconWraper" @click="handleMenuClick(!showMenu)">
+        <svg-icon icon-class="head-menu" :class="showMenu ? 'menuIcon active' : 'menuIcon'"/>
+      </div>
+      <Menu :left="showMenu ? '0' : '100vw'" :callBack="() => handleMenuClick(false)" :menus="menus"/>
     </div>
   </div>
 </template>
@@ -78,6 +70,31 @@ export default  Vue.extend({
   data() {
     return {
       currentPage: 0 as any,
+      showMenu: false,
+      menus: {
+        product: [
+          {href: '/product/expenditure', title: '支出管控'},
+          {href: '/product/project', title: '项目管理'},
+          {href: '/product/cashflow', title: '现金流分析'},
+          {href: '/product/wisdom', title: '智慧财务'},
+          {href: '/product/integrate', title: '系统集成'},
+          {href: '/product/payment', title: '聚合支付'},
+          {href: '/product/bidding', title: '招投标管理'},
+        ],
+        solution: [
+          {href: '/solution/projectcosts', title: '工程造价咨询&工程安全咨询'},
+          {href: '/solution/realestate', title: '房地产行业解决方案'},
+          {href: '/solution/rural', title: '乡村数字化解决方案'},
+          {href: '/solution/number', title: '数字资产行业的解决方案'},
+          {href: '/solution/production', title: '生产制造业解决方案'},
+          {href: '/solution/ecommerce', title: '电商行业解决方案'},
+          {href: '/solution/cosmetology', title: '医疗美容业解决方案'},
+        ],
+        aboutus: [
+          {href: '/aboutus/aboutus', title: '公司介绍'},
+          {href: '/aboutus/together', title: '渠道合作'},
+        ],
+      },
     };
   },
   mounted() {
@@ -103,9 +120,9 @@ export default  Vue.extend({
           this.currentPage = 4;
         }
     },
-    routerTo(path: string) {
-      this.$nuxt.$router.push(path);
-    },   
+    handleMenuClick(flag: boolean) {
+      this.showMenu = flag;
+    }
   },
   watch: {
     $route (to, _from) {
@@ -134,6 +151,9 @@ export default  Vue.extend({
   .btnGroup {
     display: flex;
     align-items: center;
+    @media screen and (max-width: 760px) {
+      display: none;
+    }
     button {
       width: 100px;
       height: 40px;
@@ -157,6 +177,22 @@ export default  Vue.extend({
       }
     }
   }
+  .menuIconWraper {
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+    @media screen and (max-width: 760px) {
+      visibility: visible;
+    }
+    .menuIcon {
+      width: 28px;
+      height: 25px;
+      fill: rgb(255, 255, 255);
+    }
+    .active {
+      fill: var(--bg);
+    }
+  }
 }
 .header {
   display: flex;
@@ -171,6 +207,10 @@ export default  Vue.extend({
     width: 100%;
     padding: 0 60px;
   }
+  @media (max-width: 760px) {
+    width: 100%;
+    padding: 0 30px;
+  }
   .logo {
     width: 122px;
     height: 27px;
@@ -179,6 +219,9 @@ export default  Vue.extend({
     margin-left: 48px;
     height: 100%;
     display: flex;
+    @media screen and (max-width: 760px) {
+      display: none;
+    }
     .box {
       font-size: 16px;
       color: #fff;
@@ -254,9 +297,10 @@ export default  Vue.extend({
         width: max-content;
         min-width: 150px;
         box-shadow: 0px 3px 51px 0px rgba(174,182,206,0.35);
-        border-radius: 0 0 5px 5px;
+        border-radius: 0 0 3px 3px;
         transition: all 0.3s;
         opacity: 0;
+        overflow: hidden;
         li {
           width: 100%;
           font-size: 14px;
@@ -266,11 +310,11 @@ export default  Vue.extend({
           padding: 0 30px 0 30px;
           letter-spacing: 1px;
           color: #000;
+          // border-bottom: 1px solid #f3f1f1;
           &:hover {
             background: #559dff;
             color: #fff;
           }
-          border-bottom: 1px solid #f3f1f1;
         }
       }
       .arrow {

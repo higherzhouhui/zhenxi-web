@@ -3,9 +3,9 @@
     <!-- banner -->
     <div class="banner">
       <div class="w1440 content">
-        <div class="f36 m-b-40 tip1">智慧财务</div>
-        <div class="f24 m-b-26 tip2">线上财务室 审批核算自动化处理</div>
-        <div class="f24 m-b-54 tip2">人力效率高 财务辅助分析和决策</div>
+        <div class="m-b-40 tip1">智慧财务</div>
+        <div class="m-b-26 tip2">线上财务室 审批核算自动化处理</div>
+        <div class="m-b-54 tip2">人力效率高 财务辅助分析和决策</div>
         <span class="f16 btn" v-on:click="showCustomer">立即咨询</span>
       </div>
     </div>
@@ -13,23 +13,25 @@
     <div class="w1440 process">
       <div class="item" v-for="(item, index) in processData" :key="index">
         <img :src="item.img" class="img" />
-        <span class="name f24"><strong>{{ item.name }}</strong></span>
-        <span class="name 16">{{ item.desc }}</span>
+        <div>
+            <div class="name"><strong>{{ item.name }}</strong></div>
+            <div class="desc">{{ item.desc }}</div>
+        </div>
       </div>
     </div>
     <div class="advantage">
       <div class="w1440 content">
         <div class="item">
           <div class="item-l">
-            <div class="f36 m-b-30">智慧财务</div>
+            <div class="tip1 m-b-30">智慧财务</div>
             <div class="list">
-              <div class="list-item f24 m-b-26">
+              <div class="list-item tip2 m-b-26">
                 凭证自动生成，大幅缩短财务审批工作量
               </div>
-              <div class="list-item f24 m-b-26">
+              <div class="list-item tip2 m-b-26">
                 智能出纳管理，一键批量付款效率成倍提升
               </div>
-              <div class="list-item f24 m-b-26">
+              <div class="list-item tip2 m-b-26">
                 业务核算多维度统计，企业支出管理更规范
               </div>
             </div>
@@ -72,7 +74,7 @@ export default Vue.extend({
   height: 451px;
   background: url(@/static/image/product/wisdom/banner-bg.png) no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: cover;  background-size: cover;
   .content {
     height: 100%;
     display: flex;
@@ -80,12 +82,31 @@ export default Vue.extend({
     justify-content: center;
     color: #fff;
   }
+  .tip1 {
+    font-size: 36px;
+    margin-bottom: 48px;
+    @media screen and (max-width: 760px) {
+      font-size: 28px;
+    }
+  }
+  .tip2 {
+    font-size: 24px;
+    margin-bottom: 36px;
+    @media screen and (max-width: 760px) {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
 }
 .process {
   display: flex;
   justify-content: space-between;
   margin: 100px auto 148px;
   background: #fff;
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+    margin: 50px auto 100px;
+  }
   .item {
     display: flex;
     flex-direction: column;
@@ -93,68 +114,64 @@ export default Vue.extend({
     position: relative;
     align-items: center;
     padding: 0 60px;
+    @media screen and (max-width: 760px) {
+      flex-direction: row;
+      padding: 0;
+      img {
+        width: 80px!important;
+        margin-right: 20px;
+      }
+      .name, .desc {
+        text-align: left;
+      }
+    }
     img{
       width: 140px;
     }
     .name {
       padding-top: 24px;
       color: #3d3d3d;
-      line-height: 24px;
+      line-height: 32px;
+      font-size: 24px;
     }
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   background: url(@/static/image/product/icon-right.png) no-repeat;
-    //   width: 13px;
-    //   height: 15px;
-    //   display: inline-block;
-    //   top: 63px;
-    //   right: -50px;
-    // }
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   background: #dee9ff;
-    //   width: 77px;
-    //   height: 2px;
-    //   display: inline-block;
-    //   top: 70px;
-    //   right: -77px;
-    // }
-    &:last-child {
-      &::after,
-      &::before {
-        content: none;
-      }
+    .desc {
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 }
 
 .advantage {
   background: #f7f8fa;
+  padding: 30px 0;
   .content {
     .item {
-      height: 520px;
       display: flex;
       justify-content: space-between;
+      @media screen and (max-width: 760px) {
+        flex-direction: column;
+      }
       .tip1 {
         color: #3d3d3d;
+        font-size: 36px;
+        @media screen and (max-width: 760px) {
+          font-size: 28px;
+        }
       }
       .tip2 {
         color: #666;
-      }
-      img {
-        height: 412px;
+        font-size: 24px;
+        @media screen and (max-width: 760px) {
+          font-size: 18px;
+        }
       }
       &-l,
       &-r {
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
       &-l {
-        width: 553px;
         .list-item {
           position: relative;
           padding-left: 26px;

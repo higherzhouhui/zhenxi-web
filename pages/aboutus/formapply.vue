@@ -51,8 +51,8 @@
           <div class="inputContainer">
             <!-- <img class="prefix" src="@/static/image/together/yzm.png" alt="验证码" /> -->
             <svg-icon icon-class="valid" class="prefix"/>
-            <input class="inputWrapper" type="text" placeholder="请输入验证码" v-model="form.yzm"/>
-            <div :class="form.tel && validPhone() ? 'yzm active' : 'yzm'" v-on:click="getYanZhenMa">{{time ? `${time}S` : '获取验证码'}}</div>
+            <input class="inputWrapper" type="text" placeholder="请输入验证码" v-model="form.yzm" v-on:keyup.13="submit"/>
+            <div :class="form.tel && validPhone() ? 'yzm active' : 'yzm'" v-on:click="getYanZhenMa">{{time ? `${time}S重新获取` : '获取验证码'}}</div>
             <div class="yzm-popup" :style="{width: width + 'px',visibility: popUpImg ? 'visible' : 'hidden'}">
               <img :src="imgbg" alt="yzm" class="yzm-bg"/>
               <img :src="imgslide" alt="yzm" class="slide" :style="{left: left + 'px'}"/>
@@ -69,7 +69,7 @@
           </button>
         </div>
         <div class="right" v-if="success">
-          <button class="return" v-on:click="goBack">返回</button>
+          <nuxt-link to="/"> <button class="return">返回</button></nuxt-link>
           <img class="successImg" src="@/static/image/together/success.png" />
           <div class="successTitle">提交成功</div>
           <h3>您的专属客户经理将在24小时内联系您</h3>
@@ -136,6 +136,30 @@ export default Vue.extend({
       }
       }
     }
+    //鼠标按下
+    if (slideBtnDom) {
+      slideBtnDom.ontouchstart = function (e) {
+      //鼠标相对于盒子的位置
+      var offsetX = e.changedTouches[0].clientX - slideBtnDom!.offsetLeft;
+      //鼠标移动
+      slideBtnDom.ontouchmove = function (e) {
+        let cleft = Math.floor(e.changedTouches[0].clientX - offsetX);
+        if (cleft > self.width - 40) {
+          cleft = self.width - 40;
+        }
+        if (cleft < 0) {
+          cleft = 0;
+        }
+        self.left = cleft;
+      }
+      //鼠标抬起
+      document.ontouchend  = function () {
+          self.sendYZMRequest();
+          document.ontouchstart = null;
+          document.ontouchmove = null;
+      }
+      }
+    }
   },
   methods: {
     // handleClickDownIcon(tab: string) {
@@ -160,37 +184,37 @@ export default Vue.extend({
       // }, 1000);
     },
     sendYZMRequest() {
-      sendValideCode({
-        areaCode: '+86',
-        captcha: {
-          key: this.key,
-          vx: this.left,
-          width: this.width,
-        },
-        phone: this.form.tel,
-      }).then((res: any) => {
-        if (res?.success) {
-          this.popUpImg = false;
-          this.time = 59;
-          this.timer = setInterval(() => {
-            this.time --;
-            if (!this.time) {
-              clearInterval(this.timer as any);
-            }
-          }, 1000);
-        } else {
-          this.getCapchaImg();
-        }
-      });
-      // this.time = 59;
-      // this.timer = setInterval(() => {
-      //   this.time --;
-      //   if (!this.time) {
-      //     clearInterval(this.timer as any);
-      //   }
-      // }, 1000);
+      if (this.left) {
+        sendValideCode({
+          areaCode: '+86',
+          captcha: {
+            key: this.key,
+            vx: this.left,
+            width: this.width,
+          },
+          phone: this.form.tel,
+        }).then((res: any) => {
+          if (res?.success) {
+            this.popUpImg = false;
+            this.time = 59;
+            this.timer = setInterval(() => {
+              this.time --;
+              if (!this.time) {
+                clearInterval(this.timer as any);
+              }
+            }, 1000);
+          } else {
+            this.getCapchaImg();
+          }
+        });
+      } else {
+        this.popUpImg = false;
+      }
     },
     submit() {
+      if (!this.canSubmit() && !this.error) {
+        return;
+      }
       //将所有的数据传到后端
       submitPersonInfo({
         corpName: this.form.qy,
@@ -268,9 +292,17 @@ export default Vue.extend({
     align-items: center;
     justify-content: space-between;
     min-height: calc(100vh - 80px);
+    @media screen and (max-width: 760px) {
+      justify-content: center;
+    }
   }
   .tip1 {
     font-weight: bold;
+  }
+  .left {
+    @media screen and (max-width: 760px) {
+      display: none;
+    }
   }
   .downLoad {
     display: flex;
@@ -323,6 +355,10 @@ export default Vue.extend({
       height: 550px;
       padding: 0 20px;
     }
+    @media screen and (max-width: 760px) {
+      width: 95%;
+      margin: 0 auto;
+    }
     h1 {
       color: #333333;
       font-weight: bold;
@@ -334,6 +370,7 @@ export default Vue.extend({
       font-size: 22px;
       color: #3D3D3D;
       text-align: center;
+      line-height: 30px;
     }
     .inputContainer {
       width: 100%;
@@ -358,9 +395,11 @@ export default Vue.extend({
         padding-left: 60px;
         font-size: 20px;
         color: #000;
+        @media screen and (max-width: 760px) {
+          font-size: 16px;
+        }
         ::placeholder {
           color: #999999;
-          font-size: 20px;
         }
         &:hover {
           border: 2px solid #0558f1;
@@ -377,6 +416,9 @@ export default Vue.extend({
         color: #999999;
         cursor: pointer;
         transform: translateY(-50%);  
+        @media screen and (max-width: 760px) {
+          font-size: 16px;
+        }
       }
       .active {
         color: #035BEC;
@@ -386,6 +428,10 @@ export default Vue.extend({
         z-index: 99;
         left: 44px;
         top: -180px;
+        @media screen and (max-width: 760px) {
+          left: 0;
+          top: -200px;
+        }
         .yzm-bg {
           width: 100%;
           height: 100%;
@@ -474,6 +520,7 @@ export default Vue.extend({
     .successTitle {
       font-size: 36px;
       font-weight: bold;
+      margin: 30px 0;
     }
     .h3mb {
       margin-bottom: 190px;

@@ -126,29 +126,28 @@ export default Vue.extend({
 
 .advantage {
   background: #f7f8fa;
+  padding: 30px 0;
   .content {
     .item {
-      height: 520px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      @media screen and (max-width: 760px) {
+        flex-direction: column;
+      }
       .tip1 {
         color: #3d3d3d;
       }
       .tip2 {
         color: #666;
       }
-      img {
-        height: 412px;
-      }
       &-l,
       &-r {
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
       &-l {
-        width: 553px;
         .list-item {
           position: relative;
           padding-left: 26px;

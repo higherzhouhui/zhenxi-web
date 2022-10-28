@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="toolComponent">
     <div class="mask" v-if="showMask" @click="clickCallBack"></div>
     <div class="toolWrapper">
       <div class="vxContainer">
@@ -8,7 +8,7 @@
         <div class="vxPic contact" :style="{visibility: showCustomer ? 'visible' : 'hidden', opacity: showCustomer ? 1 : 0}" id="customer">
           <img src="@/static/image/getprice/no.png" class="close" alt="" @click="clickCallBack">
           <div class="contact-title">微信扫码联系专业顾问</div>
-          <img class="contact-img" src="@/static/image/qywx.png" alt="">
+          <img class="contact-img" src="@/static/image/qywx.png" alt="" loading="lazy">
           <div class="contact-welTel m-t-8">欢迎拨打电话咨询</div>
           <div class="contact-telNumber m-t-8">400-027-8016</div>
           <div class="contact-address">公司联系地址</div>
@@ -99,6 +99,11 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.toolComponent {
+  @media screen and (max-width: 760px) {
+    visibility: hidden;
+  }
+}
 .toolWrapper {
   width: 50px;
   height: 300px;
@@ -229,7 +234,7 @@ export default Vue.extend({
       .close {
         position: absolute;
         right: 8px;
-        top: 6px;
+        top: 10px;
         width: 14px;
         height: 14px;
         cursor: pointer;

@@ -55,6 +55,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 760px) {
+        min-height: 400px;
+    }
     .main {
         display: flex;
         @media (max-width: 1200px) {
@@ -69,12 +72,19 @@
             @media (max-width: 1200px) {
                 align-items: center;
             }
+            @media (max-width: 760px) {
+                margin-right: 0;
+            }
             h1 {
                 font-family: PingFang SC Bold;
                 font-size: 36px;
                 font-weight: bold;
                 line-height: 54px;
                 color: #3D3D3D;
+                @media (max-width: 760px) {
+                    font-size: 30px;
+                    line-height: 40px;
+                }
             }
             h2 {
                 font-size: 30px;
@@ -82,6 +92,10 @@
                 color: #559DFF;
                 line-height: 45px;
                 margin-top: 15px;
+                @media (max-width: 760px) {
+                    font-size: 24px;
+                    line-height: 32px;
+                }
             }
             .downLoadWrapper {
                 margin-top: 40px;
@@ -150,6 +164,11 @@
                     text-align: center;
                     margin-top: 3px;
                 }
+            }
+        }
+        .right {
+            @media (max-width: 760px) {
+                display: none;
             }
         }
     }

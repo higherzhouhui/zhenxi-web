@@ -132,22 +132,20 @@ export default Vue.extend({
 
 .advantage {
   background: #f7f8fa;
+  padding: 30px 0;
   .content {
     .item {
-      height: 520px;
       display: flex;
       justify-content: space-between;
-      @media (max-width: 1440px) {
-        height: 600px;
+      align-items: center;
+      @media (max-width: 760px) {
+        flex-direction: column;
       }
       .tip1 {
         color: #3d3d3d;
       }
       .tip2 {
         color: #666;
-      }
-      img {
-        height: 412px;
       }
       &-l,
       &-r {
@@ -157,7 +155,6 @@ export default Vue.extend({
         justify-content: center;
       }
       &-l {
-        width: 553px;
         .list-item {
           position: relative;
           padding-left: 26px;

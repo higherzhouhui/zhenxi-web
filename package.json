@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "pm2": "pm2 start npm --name 'zhenxi-web' --start"
+    "pm2": "pm2 start npm --name 'zhenxi-web' -- start"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",

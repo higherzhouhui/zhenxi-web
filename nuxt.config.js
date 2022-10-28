@@ -74,7 +74,7 @@ module.exports = {
   },
   telemetry: false,
   server: {
-    port: 8988, // default: 3000
+    port: 8000, // default: 3000
     host: '0.0.0.0', // default: localhost只能用于本机访问，如果需要对外访问需要设置0.0.0.0
   },
   dev: process.env.NODE_ENV !== 'production',

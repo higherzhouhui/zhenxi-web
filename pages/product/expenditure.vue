@@ -3,9 +3,9 @@
     <!-- banner -->
     <div class="banner">
       <div class="w1440 content">
-        <div class="f36 m-b-40 tip1">支出管控</div>
-        <div class="f24 m-b-26 tip2">全方位管控 实现费用透明不超支</div>
-        <div class="f24 m-b-54 tip2">一站式报销 帮助企业省钱还省事</div>
+        <div class="tip1">支出管控</div>
+        <div class="tip2">全方位管控 实现费用透明不超支</div>
+        <div class="tip2">一站式报销 帮助企业省钱还省事</div>
         <span class="f16 btn" v-on:click="showCustomer">立即咨询</span>
       </div>
     </div>
@@ -13,22 +13,22 @@
     <div class="w1440 process">
       <div class="item" v-for="(item, index) in processData" :key="index">
         <img :src="item.img" class="img" />
-        <span class="name f24">{{ item.name }}</span>
+        <span class="name">0{{index + 1}}.{{ item.name }}</span>
       </div>
     </div>
-    <div class="advantage">
-      <div class="w1440 content">
+    <div class="w1440 advantage">
+      <div class="content">
         <div class="item">
           <div class="item-l">
-            <div class="f36 m-b-30">支出管控</div>
+            <div class="m-b-30 tip1">支出管控</div>
             <div class="list">
-              <div class="list-item f24 m-b-26">
+              <div class="list-item  tip2 m-b-26">
                 纸质发票线上导入，告别手动贴发票时代
               </div>
-              <div class="list-item f24 m-b-26">
+              <div class="list-item  tip2 m-b-26">
                 发票归入票池，机器人智能验真查重，避免财税损失
               </div>
-              <div class="list-item f24 m-b-26">
+              <div class="list-item tip2 m-b-26">
                 对预算进行事前、事中、事后管控和分析，穿插全业
                 务环节进行费用管控
               </div>
@@ -73,10 +73,10 @@ export default Vue.extend({
 </script>
 <style lang="scss" scoped>
 .banner {
-  height: 451px;
   background: url(@/static/image/product/expenditure/banner-bg.png) no-repeat;
   background-position: center;
   background-size: cover;
+  padding: 70px 0;
   .content {
     height: 100%;
     display: flex;
@@ -84,12 +84,34 @@ export default Vue.extend({
     justify-content: center;
     color: #fff;
   }
+  .tip1 {
+    font-size: 36px;
+    margin-bottom: 48px;
+    @media screen and (max-width: 760px) {
+      font-size: 28px;
+    }
+  }
+  .tip2 {
+    font-size: 24px;
+    margin-bottom: 36px;
+    @media screen and (max-width: 760px) {
+      font-size: 18px;
+    }
+  }
 }
 .process {
   display: flex;
   justify-content: space-between;
   margin: 100px auto 148px;
+  @media screen and (max-width: 760px) {
+    margin: 50px auto 0px;
+  }
   background: #fff;
+  @media (max-width: 760px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 20px;
+  }
   .item {
     display: flex;
     flex-direction: column;
@@ -99,6 +121,10 @@ export default Vue.extend({
       padding-top: 24px;
       color: #3d3d3d;
       font-weight: bold;
+      font-size: 24px;
+      @media screen and (max-width: 760px) {
+        font-size: 18px;
+      }
     }
     &::after {
       content: "";
@@ -128,32 +154,40 @@ export default Vue.extend({
     }
   }
 }
-
 .advantage {
-  background: #f7f8fa;
   .content {
+    padding: 60px 0;
     .item {
-      height: 520px;
       display: flex;
       justify-content: space-between;
+      @media  (max-width: 760px) {
+        flex-direction: column;
+        align-items: center;
+      }
       .tip1 {
         color: #3d3d3d;
+        font-size: 36px;
+        @media screen and (max-width: 760px) {
+          font-size: 28px;
+        }
       }
       .tip2 {
         color: #666;
+        font-size: 24px;
+        @media screen and (max-width: 760px) {
+          font-size: 18px;
+        }
       }
       img {
         height: 412px;
       }
       &-l,
       &-r {
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
       &-l {
-        width: 553px;
         .list-item {
           position: relative;
           padding-left: 26px;
@@ -174,7 +208,6 @@ export default Vue.extend({
     }
   }
 }
-
 .h-title {
   height: 48px;
   font-weight: normal;

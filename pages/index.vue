@@ -3,7 +3,7 @@
     <!-- banner -->
     <div class="banner">
       <div class="content">
-        <img src="@/static/image/home/banner-title.png" alt="" class="name" />
+        <img src="@/static/image/home/banner-title.png" alt="" class="name" loading="lazy"/>
         <div class="title">洞察业务数据 驱动企业增长</div>
         <div class="button" v-on:click="showCustomer">获取您的专属方案</div>
         <div class="des">提供多行业场景下的智能业财一体化解决方案</div>
@@ -12,10 +12,10 @@
     <!-- 问答 -->
     <div class="w1440">
       <div class="home-QA">
-        <div class="qus h-title f36">
+        <div class="qus h-title">
           后疫情时代，企业如何跨过寒冬，保持冷静增长？
         </div>
-        <div class="anwser f36">答：降本增效</div>
+        <div class="anwser">答：降本增效</div>
       </div>
     </div>
     <!-- 解决方案 -->
@@ -96,24 +96,25 @@
     <div class="function">
       <div class="h-title f36">7大细分功能点让成本管控方案落地</div>
       <div class="content">
+        <img src="@/static/image/home/function-bg.png" loading="lazy" alt="fangan" class="fun-bg" />
         <div class="w1440 box">
           <div class="menu">
             <div class="">
               <dl v-for="(item, index) in functionData" :key="index" v-on:click="setCurrent(index)" :class="`seven-menu-contain ${index == current ? 'active' : ''}`">
-                <dt class="icon"><img :src="item.normalIcon" alt=""></dt>
-                <dt class="hovericon"><img :src="item.hoverIcon" alt=""></dt>
-                <dd class="f24 title">{{ item.title }}</dd>
-                <dt class="right-n-icon"><img src="@/static/image/home/seven-normal.png" alt=""></dt>
-                <dt class="right-h-icon"><img src="@/static/image/home/seven-hover.png" alt=""></dt>
+                <dt class="icon"><img :src="item.normalIcon" alt="" loading="lazy"></dt>
+                <dt class="hovericon"><img :src="item.hoverIcon" alt="" loading="lazy"></dt>
+                <dd class="title">{{ item.title }}</dd>
+                <dt class="right-n-icon"><img src="@/static/image/home/seven-normal.png" alt="" loading="lazy"></dt>
+                <dt class="right-h-icon"><img src="@/static/image/home/seven-hover.png" alt="" loading="lazy"></dt>
               </dl>
             </div>
           </div>
           <div class="detail">
-            <div class="f36 m-b-30">{{functionData[current].title}}</div>
-            <div class="f24 m-b-30">{{functionData[current].desc}}</div>
+            <div class="title m-b-30">{{functionData[current].title}}</div>
+            <div class="desc m-b-30">{{functionData[current].desc}}</div>
             <div class="list m-b-36 m-t-20">
               <div
-                class="list-item f22 m-b-26"
+                class="list-item list-text m-b-26"
                 v-for="(item1, index1) in functionData[current].list"
                 :key="index1"
               >
@@ -130,27 +131,27 @@
       <div class="h-title f36">企金控为多行业提供业财一体化专业解决方案</div>
       <div class="solve-container">
         <div class="img-wrapper">
-          <img src="@/static/image/home/solve-1.png" alt="" />
+          <img src="@/static/image/home/solve-1.png" alt="" loading="lazy"/>
           <nuxt-link to="/solution/number">
             <div class="mask">
-            <img src="@/static/image/home/mask-shuzi.png" />
+            <img src="@/static/image/home/mask-shuzi.png" loading="lazy"/>
             <div>数字资产行业</div>
           </div></nuxt-link>
         </div>
         <div class="img-wrapper">
-          <img src="@/static/image/home/solve-2.png" alt="" />
+          <img src="@/static/image/home/solve-2.png" alt="" loading="lazy"/>
           <nuxt-link to="/solution/production">
             <div class="mask">
-              <img src="@/static/image/home/mask-sczz.png" />
+              <img src="@/static/image/home/mask-sczz.png" loading="lazy"/>
               <div>生产制造业</div>
             </div>
           </nuxt-link>
         </div>
         <div class="img-wrapper">
-          <img src="@/static/image/home/solve-3.png" alt="" />
+          <img src="@/static/image/home/solve-3.png" alt="" loading="lazy"/>
           <nuxt-link to="/solution/ecommerce">
             <div class="mask">
-              <img src="@/static/image/home/mask-ds.png" />
+              <img src="@/static/image/home/mask-ds.png" loading="lazy"/>
               <div>电商行业</div>
             </div>
           </nuxt-link>
@@ -162,7 +163,7 @@
       <div class="h-title f36">为什么我们值得信赖？</div>
       <div class="item-box">
         <div class="item" v-for="(item, index) in trustData" :key="index">
-          <img :src="item.img" class="img" />
+          <img :src="item.img" class="img" loading="lazy"/>
           <div class="title f32 m-b-48">{{ item.title }}</div>
           <div class="list">
             <div
@@ -215,22 +216,22 @@
     <div class="w1440 partner">
       <div class="h-title f36">合作客户</div>
       <div class="item-box">
-        <img :src="require('@/static/image/home/p-pf.png')" class="img" />
-        <img :src="require('@/static/image/home/p-xy.png')" class="img" />
-        <img :src="require('@/static/image/home/p-zg.png')" class="img" />
-        <img :src="require('@/static/image/home/p-gs.png')" class="img" />
-        <img :src="require('@/static/image/home/p-aly.png')" class="img" />
-        <img :src="require('@/static/image/home/p-hwy.png')" class="img" />
-        <img :src="require('@/static/image/home/p-txy.png')" class="img" />
-        <img :src="require('@/static/image/home/p-jd.png')" class="img" />
-        <img :src="require('@/static/image/home/p-al.png')" class="img" />
-        <img :src="require('@/static/image/home/p-xc.png')" class="img" />
-        <img :src="require('@/static/image/home/p-ny.png')" class="img" />
-        <img :src="require('@/static/image/home/p-dl.png')" class="img" />
+        <img :src="require('@/static/image/home/p-pf.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-xy.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-zg.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-gs.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-aly.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-hwy.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-txy.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-jd.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-al.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-xc.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-ny.png')" class="img" loading="lazy"/>
+        <img :src="require('@/static/image/home/p-dl.png')" class="img" loading="lazy"/>
       </div>
     </div>
     <div class="banner3">
-
+      <img src="@/static/image/home/banner3-bg.png" alt="" loading="lazy">
     </div>
   </div>
 </template>
@@ -435,6 +436,21 @@ export default Vue.extend({
     align-items: center;
     width: 100%;
     padding-top: 220px;
+
+    @media screen and (max-width: 760px) {
+      .name {
+        width: 90%;
+        object-fit: fill;
+      }
+      .title {
+        font-size: 26px!important;
+      }
+      .button {
+        padding: 12px 18px !important;
+        font-size: 18px !important;
+        margin-top: 20px!important;
+      }
+    }
     .title {
       font-size: 32px;
       margin-top: 40px;
@@ -457,6 +473,9 @@ export default Vue.extend({
       font-size: 24px;
       line-height: 36px;
       position: relative;
+      @media screen and (max-width: 760px) {
+        font-size: 16px;
+      }
       &::before,
       &::after {
         content: "";
@@ -468,27 +487,61 @@ export default Vue.extend({
         top: 50%;
         transform: translateY(-50%);
         left: -70px;
+        @media screen and (max-width: 760px) {
+          width: 20px;
+          left: -30px;
+        }
       }
       &::after {
         left: unset;
         right: -70px;
+        @media screen and (max-width: 760px) {
+          right: -30px;
+        }
+      }
+    }
+  }
+}
+.wrap {
+  .h-title {
+    font-size: 36px;
+  }
+  @media screen and (max-width: 760px) {
+    .banner {
+      height: 460px!important;
+      .content {
+        padding-top: 100px!important;
+      }
+    }
+    .h-title {
+      font-size: 26px;
+    }
+    .anwser  {
+      font-size: 26px!important;
+    }
+    .solution {
+      grid-template-columns: repeat(1, 1fr)!important;
+    }
+    .item {
+      flex-direction: column!important;
+      .img {
+        width: 100%!important;
       }
     }
   }
 }
 .home-QA {
-  height: 290px;
   background: #fafafa;
-  padding: 60px 0;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -88px;
+  margin-top: -80px;
   margin-bottom: 68px;
   .anwser {
-    font-weight: normal;
     line-height: 48px;
     color: #559dff;
+    font-size: 36px;
   }
 }
 .solution {
@@ -498,7 +551,6 @@ export default Vue.extend({
   grid-row-gap: 20px;
   margin-bottom: 70px;
   .item {
-    height: 290px;
     background: #fafafa;
     display: flex;
     justify-content: space-between;
@@ -581,6 +633,18 @@ export default Vue.extend({
   //  background-size: cover;
   margin-bottom: 70px;
   position: relative;
+  @media screen and (max-width: 760px) {
+      height: 500px;
+      .content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0!important;
+      }
+    }
   .content {
     color: #fff;
     position: absolute;
@@ -593,7 +657,7 @@ export default Vue.extend({
         bottom: -36px;
         display: block;
         width: 120px;
-        height: 8px;
+        height: 6px;
         background: #fff;
         left: 0;
       }
@@ -628,31 +692,50 @@ export default Vue.extend({
   margin: 70px 0;
   position: relative;
   .h-title {
-    margin-bottom: 110px;
+    margin-bottom: 90px;
+  }
+  .fun-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
   }
   .content {
-    height: 771px;
-    background: url(@/static/image/home/function-bg.png) no-repeat;
-    background-position: center;
-    background-size: cover;
     position: relative;
+    padding: 40px 0;
     .box {
       display: flex;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      align-items: center;
     }
     .menu {
       width: 498px;
-      height: 744px;
-      background: url(@/static/image/home/menu-bg.png) no-repeat;
-      background-position: bottom left;
-      padding: 85px 45px 45px 45px;
+      // background: url(@/static/image/home/menu-bg.png) no-repeat;
+      // background-position: bottom left;
+      background: #fff;
       @media (max-width: 1440px) {
         width: 400px;
-        padding: 85px 0px 45px 45px;
-
+      }
+      @media screen and (max-width: 760px) {
+        width: 150px;
+        .seven-menu-contain {
+          padding: 0 5px!important;
+          font-size: 18px!important;
+          .icon {
+            display: none!important;
+          }
+          .hovericon {
+            display: none!important;
+          }
+          .right-h-icon  {
+            display: none!important;
+          }
+          .right-n-icon {
+            display: none;
+          }
+        }
       }
       .seven-menu-contain {
         display: flex;
@@ -664,18 +747,18 @@ export default Vue.extend({
         &:hover {
           background: #559dff;
           color: #fff;
-        .icon {
-          display: none;
-        }
-        .hovericon {
-          display: block;
-        }
-        .right-h-icon {
-          display: block;
-        }
-        .right-n-icon {
-          display: none;
-        }
+          .icon {
+            display: none;
+          }
+          .hovericon {
+            display: block;
+          }
+          .right-h-icon {
+            display: block;
+          }
+          .right-n-icon {
+            display: none;
+          }
         }
       }
       dd {
@@ -717,7 +800,29 @@ export default Vue.extend({
     }
     .detail {
       flex: 1;
-      margin: 155px 0 0 40px;
+      margin: 0 0 0 40px;
+      @media (max-width:760px) {
+        .title {
+          font-size: 26px!important;
+        }
+        .desc {
+          font-size: 18px!important;
+        }
+        .list-text {
+          font-size: 16px!important;
+        }
+      }
+      .title {
+        font-size: 36px;
+      }
+      .desc {
+        font-size: 24px;
+        line-height: 36px;
+      }
+      .list-text {
+        font-size: 22px;
+        line-height: 30px;
+      }
       .list-item {
         position: relative;
         padding-left: 26px;
@@ -751,8 +856,10 @@ export default Vue.extend({
     grid-column-gap: 32px;
     grid-row-gap: 32px;
     @media (max-width: 1440px) {
-    grid-template-columns: repeat(2, 1fr);
-      
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 760px) {
+      grid-template-columns: repeat(1, 1fr);
     }
     .item {
       height: 583px;
@@ -802,6 +909,9 @@ export default Vue.extend({
   @media (max-width: 1440px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  @media (max-width: 760px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
   .box1,
   .box2,
   .box3,
@@ -837,15 +947,24 @@ export default Vue.extend({
   }
 }
 .partner {
-  margin-bottom: 105px;
+  margin-bottom: 100px;
   .h-title {
-    margin-bottom: 110px;
+    margin-bottom: 90px;
   }
   .item-box {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 212px;
     grid-row-gap: 121px;
+    @media screen and (max-width: 1440px) {
+      grid-column-gap: 150px;
+      grid-row-gap: 80px;
+    }
+    @media screen and (max-width: 760px) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 50px;
+      grid-row-gap: 20px;
+    }
     .img {
       margin: 0 auto;
       height: 50px;
@@ -854,15 +973,19 @@ export default Vue.extend({
   }
 }
 .banner3{
-  height: 629px;
-  background: url(@/static/image/home/banner3-bg.png) no-repeat;
-  // background-position: center;
-  // background-size: cover;
   width: 100%;
-  background-size: 100% 100%;
+  img {
+    width: 100%;
+    object-fit: scale-down;
+  }
+  // height: 629px;
+  // background: url(@/static/image/home/banner3-bg.png) no-repeat;
+  // // background-position: center;
+  // // background-size: cover;
+  // width: 100%;
+  // background-size: 100% 100%;
 }
 .h-title {
-  height: 48px;
   font-weight: normal;
   line-height: 48px;
   color: #3d3d3d;
@@ -887,7 +1010,6 @@ export default Vue.extend({
   background: #559dff;
   padding: 15px 18px;
   color: #fff;
-  width: 100px;
   cursor: pointer;
   &:hover {
     background: var(--buttonHover);
@@ -895,13 +1017,25 @@ export default Vue.extend({
 }
 
 .solve-container {
-  display: flex;
+  display: grid;
   width: 100%;
-  justify-content: space-between;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  @media screen and (max-width: 760px){
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 0;
+    .mask {
+      visibility: visible!important;
+    }
+  }
   .img-wrapper {
-    width: 32%;
     position: relative;
     cursor: pointer;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
     &:hover {
       .mask {
         visibility: visible;

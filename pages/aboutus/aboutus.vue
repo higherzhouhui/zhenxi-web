@@ -21,7 +21,7 @@
     </div>
     <div class="botImg">
       <div class="miaosu">
-          <div class="f36">立即开启您的全新智能业财一体化旅程</div>
+          <div class="desc">立即开启您的全新智能业财一体化旅程</div>
           <div class="title">企金控——洞察业务数据 驱动企业增长</div>
           <div class="btns">
             <nuxt-link to="/getprice/"><button class="price">获取报价</button></nuxt-link>
@@ -73,10 +73,9 @@ export default Vue.extend({
   }
 }
 .aboutMain {
-  height: 900px;
+  padding: 80px 0 200px 0;
   background: url(@/static/image/aboutus/center.png) no-repeat center;
   background-size: cover;
-  margin-top: 60px;
   h1 {
     font-size: 42px;
     line-height: 48px;
@@ -98,11 +97,11 @@ export default Vue.extend({
   }
 }
 .botImg {
-  margin-top: -200px;
+  margin-top: -150px;
+  padding: 50px 0;
   width: 100%;
-  height: 570px;
   background: url(@/static/image/aboutus/bot.png) no-repeat center;
-  background-size: 100% 100%;
+  background-size: cover;
   display: flex;
   align-items: center;
   color: #FFFFFF;
@@ -115,8 +114,15 @@ export default Vue.extend({
     @media (max-width: 1440px) {
       margin: 150px 0px 0 550px;
     }
+    @media (max-width: 760px) {
+      margin: 150px 0px 0 100px;
+    }
+    .desc {
+      font-size: 36px;
+      line-height: 48px;
+    }
     .title {
-      font-size: 42px;
+      font-size: 36px;
       font-weight: bold;
       margin: 40px 0 48px 0;
       line-height: 60px;

@@ -85,6 +85,7 @@ button {
   padding: 0;
   border: 0;
   line-height: 1;
+  box-sizing: border-box;
 }
 :root {
   --bg: #347CFF;
@@ -150,6 +151,35 @@ img {
   .w1440 {
     width: 100%;
     padding: 0 40px;
+  }
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    width: 100%;
+    min-width: 100%;
+  }
+  .w1440 {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width: 760px) and (max-width: 1120px) {
+  body {
+    min-width: 1100px;
+    overflow: auto;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  html {
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 }
 

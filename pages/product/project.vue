@@ -3,9 +3,9 @@
     <!-- banner -->
     <div class="banner">
       <div class="w1440 content">
-        <div class="f36 m-b-40 tip1">项目管理</div>
-        <div class="f24 m-b-26 tip2">灵活管项目 自定义流程满足个性化</div>
-        <div class="f24 m-b-54 tip2">可独立核算 掌握实际项目盈利情况</div>
+        <div class="m-b-40 tip1">项目管理</div>
+        <div class="m-b-26 tip2">灵活管项目 自定义流程满足个性化</div>
+        <div class="m-b-54 tip2">可独立核算 掌握实际项目盈利情况</div>
         <span class="f16 btn" v-on:click="showCustomer">立即咨询</span>
       </div>
     </div>
@@ -13,22 +13,22 @@
     <div class="w1440 process">
       <div class="item" v-for="(item, index) in processData" :key="index">
         <img :src="item.img" class="img" />
-        <span class="name f24">{{ item.name }}</span>
+        <span class="name">{{ item.name }}</span>
       </div>
     </div>
     <div class="advantage">
       <div class="w1440 content">
         <div class="item">
           <div class="item-l">
-            <div class="f36 m-b-30">项目管理</div>
+            <div class="tip1 m-b-30">项目管理</div>
             <div class="list">
-              <div class="list-item f24 m-b-26">
+              <div class="list-item tip2 m-b-26">
                 支持项目单独核算，超预算进行提醒预警
               </div>
-              <div class="list-item f24 m-b-26">
+              <div class="list-item tip2 m-b-26">
                 支持多终端申请/审批/查阅，项目费用管理更便捷
               </div>
-              <div class="list-item f24 m-b-26">
+              <div class="list-item tip2 m-b-26">
                 流程可视、进度透明，项目情况了然于心
               </div>
             </div>
@@ -72,10 +72,10 @@ export default Vue.extend({
 </script>
 <style lang="scss" scoped>
 .banner {
-  height: 451px;
   background: url(@/static/image/product/project/banner-bg.png) no-repeat;
   background-position: center;
   background-size: cover;
+  padding: 70px 0;
   .content {
     height: 100%;
     display: flex;
@@ -83,24 +83,47 @@ export default Vue.extend({
     justify-content: center;
     color: #fff;
   }
+  .tip1 {
+    font-size: 36px;
+    margin-bottom: 48px;
+    @media screen and (max-width: 760px) {
+      font-size: 28px;
+    }
+  }
+  .tip2 {
+    font-size: 24px;
+    margin-bottom: 36px;
+    @media screen and (max-width: 760px) {
+      font-size: 18px;
+    }
+  }
 }
 .process {
   display: flex;
   justify-content: space-between;
   margin: 100px auto 148px;
+  @media screen and (max-width: 760px) {
+    margin: 50px auto 0px;
+  }
   background: #fff;
+  @media (max-width: 760px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 20px;
+  }
   .item {
     display: flex;
     flex-direction: column;
     text-align: center;
     position: relative;
-    img{
-      width: 140px;
-    }
     .name {
       padding-top: 24px;
       color: #3d3d3d;
       font-weight: bold;
+      font-size: 24px;
+      @media screen and (max-width: 760px) {
+        font-size: 18px;
+      }
     }
     &::after {
       content: "";
@@ -130,32 +153,40 @@ export default Vue.extend({
     }
   }
 }
-
 .advantage {
-  background: #f7f8fa;
   .content {
+    padding: 60px 0;
     .item {
-      height: 520px;
       display: flex;
       justify-content: space-between;
+      @media  (max-width: 760px) {
+        flex-direction: column;
+        align-items: center;
+      }
       .tip1 {
         color: #3d3d3d;
+        font-size: 36px;
+        @media screen and (max-width: 760px) {
+          font-size: 28px;
+        }
       }
       .tip2 {
         color: #666;
+        font-size: 24px;
+        @media screen and (max-width: 760px) {
+          font-size: 18px;
+        }
       }
       img {
         height: 412px;
       }
       &-l,
       &-r {
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
       &-l {
-        width: 553px;
         .list-item {
           position: relative;
           padding-left: 26px;
@@ -176,7 +207,6 @@ export default Vue.extend({
     }
   }
 }
-
 .h-title {
   height: 48px;
   font-weight: normal;
