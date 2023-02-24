@@ -51,6 +51,7 @@ export default Vue.extend({
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #f5f5f5;
+  z-index: 999;
   .left{
     display: flex;
     align-items: center;
