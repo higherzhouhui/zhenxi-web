@@ -828,6 +828,9 @@ export default Vue.extend({
     grid-template-columns: repeat(3, 1fr);
     row-gap: 18px;
     columns: 30px;
+    >a {
+      text-align: center;
+    }
     a {
       color: #000;
     }
