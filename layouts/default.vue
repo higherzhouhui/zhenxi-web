@@ -3,7 +3,7 @@
         <div class="offline" v-if="$nuxt.isOffline">You are offline</div>
         <Head />
         <Tool />
-        <Nuxt />
+        <div class="main"><Nuxt /></div>
         <Footer />
     </div>
 </template>
@@ -21,5 +21,9 @@
     color: #fff;
     z-index: 10001;
     line-height: 22px;
+}
+.main {
+    padding-top: 60px;
+    min-height: calc(100vh - 300px);
 }
 </style>
