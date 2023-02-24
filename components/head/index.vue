@@ -1,9 +1,11 @@
 <template>
   <div class="header-body">
+    <nuxt-link to="/">
     <div class="left">
       <svg-icon icon-class="logo-round" class="myLogo"/>
       <span>autofarm</span>
     </div>
+    </nuxt-link>
     <div class="right">
       <div class="wallet">
         <svg-icon icon-class="wallet-icon" class="walletIcon"/>
