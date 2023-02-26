@@ -58,7 +58,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 
 export default {
   name: "Head",
@@ -73,13 +73,12 @@ export default {
     this.judgeCurrentPage(path);
   },
   methods: {
-    judgeCurrentPage(path: string) {
-      
+    judgeCurrentPage(path) {
       this.currentPage = path;
     },
   },
   watch: {
-    $route(to, _from) {
+    $route(to) {
       const path = to.path;
       this.judgeCurrentPage(path);
     },
